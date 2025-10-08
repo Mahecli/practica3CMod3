@@ -100,7 +100,7 @@ def actualizar_correo(id_usuario, nuevo_correo):
     try:
         cursor = conn.cursor()
         #Actualización
-        cursor.execute("UPDATE usuarios SET correo = %s WHERE id_usuario = %s"),(nuevo_correo, id_usuario)
+        cursor.execute(("UPDATE usuarios SET correo = %s WHERE id_usuario = %s;"),(nuevo_correo, id_usuario))
 
         #Ejecutar cambios
         conn.commit()
@@ -120,9 +120,9 @@ def eliminar_usuario(id_usuario):
     try:
         cursor = conn.cursor()
         #Eliminar credencial primero por la restricción de llave foranea
-        cursor.execute("DELETE FROM credenciales WHERE id_usuario = %s",(id_usuario))
+        cursor.execute(("DELETE FROM credenciales WHERE id_usuario = %s;"),(id_usuario))
         #Eliminar usuario
-        cursor.execute("DELETE FROM usuarios WHERE id_usuario = %s",(id_usuario))
+        cursor.execute(("DELETE FROM usuarios WHERE id_usuario = %s;"),(id_usuario))
 
         conn.commit()
         print("Usuario correctamente eliminado")
@@ -172,9 +172,9 @@ def menu():
         elif opcion == "4":
             print("Eliminación de Usuario")
             id_usuario = input("Comparte el id del usuario que deseas eliminar")
-            eliminar_usuario()
+            eliminar_usuario(id_usuario)
 
-        elif opcion == "5":
+        elif opcion == "0":
             print("Programa Terminado")
             break
         
