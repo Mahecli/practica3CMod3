@@ -120,9 +120,9 @@ def eliminar_usuario(id_usuario):
     try:
         cursor = conn.cursor()
         #Eliminar credencial primero por la restricción de llave foranea
-        cursor.execute(("DELETE FROM credenciales WHERE id_usuario = %s;"),(id_usuario))
+        cursor.execute(("DELETE FROM credenciales  WHERE id_usuario = %s;"),(id_usuario))
         #Eliminar usuario
-        cursor.execute(("DELETE FROM usuarios WHERE id_usuario = %s;"),(id_usuario))
+        cursor.execute(("DELETE FROM usuarios  WHERE id_usuario = %s;"),(id_usuario))
 
         conn.commit()
         print("Usuario correctamente eliminado")
